@@ -1,4 +1,20 @@
+____*****************************************************
+	BASICS
+
 * CRUD - create read update delete
 * MongoClient - this is gonna give us access to the functions naccessary to be connect to the database
 * connecting to database is an Asynchronous operation
 * in mongodb we have collections instead of tables
+* insertOne is asynchronous operation
+
+* ops is the array of documents
+
+____*****************************************************
+	GENERATING OBJECT IDs USING NODE.JS
+
+* ObjectID
+		- This function is used for generate a new id
+		- OnjectID is an 12 characters string, where
+			- first 4-bytes for representing the seconds 
+			- next 5-bytes are random values
+			- 3-bytes counter, starting with a random number
