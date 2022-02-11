@@ -1,7 +1,7 @@
 const {MongoClient, ObjectID} = require('mongodb');
 
 const connectionURL = 'mongodb://127.0.0.1:27017';
-const databaseName = 'task-manager-app';
+const databaseName = 'mongodb-basic-ops';
 
 // const id = new ObjectID();
 // console.log(id, id.getTimestamp());
@@ -15,6 +15,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (err, client) => {
 
     //working with promises
 
+    /*
     //deleting one document
    db.collection('users').deleteMany({
         depart: 'share market'
@@ -25,7 +26,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (err, client) => {
       task: "movie"
    }).then(res => console.log(res))
      .catch(err => console.log(err))
-
+    */
     /*    
     //updating one document
     const updatePromise = db.collection('users').updateOne({
@@ -87,7 +88,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (err, client) => {
     })
     */
 
-    /*
+    
     //insert one is used to insert only one object
     db.collection('users').insertOne({
         name: 'Rups',
@@ -98,7 +99,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (err, client) => {
         }
         console.log(result.ops);
     })
-    */
+    
     /*
     //insert many is used to insert multiplr objects at the same time
     const userArr = [

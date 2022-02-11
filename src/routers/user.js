@@ -32,7 +32,7 @@ router.post('/users/login',async (req, res) => {
 		res.send({user, token})
 	}catch(err){
 		res.status(400).send()
-		console.log(err)
+		// console.log(err)
 	}
 })
 /*loging out*/
