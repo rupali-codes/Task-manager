@@ -48,7 +48,7 @@ const taskThree = {
     _id: new mongoose.Types.ObjectId(),
     title: 'Dishes',
     desc: 'I have to wash dishes after dinner',
-    completed: false,
+    completed: true,
     author: userOneId
 }
 

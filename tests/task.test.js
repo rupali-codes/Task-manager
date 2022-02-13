@@ -41,14 +41,27 @@ test("should fetch tasks of user", async () => {
 //starting changes
 test("should fetch only completed tasks of user", async () => {
     const response = await request(app)
-    .get('/tasks')
+    .get('/tasks?completed=false')
     .set('Authorization', (`Bearer ${userOne.tokens[0].token}`).replace('Bearer ', '')) 
     .send()
     .expect(200)
 
-    console.log(response.body) 
+    console.log(response.body.length) 
     response.body.forEach(res => {
         expect(res.completed).toBe(false)
+    })
+})
+
+test("should fetch only incompleted tasks of user", async () => {
+    const response = await request(app)
+    .get('/tasks?completed=true')
+    .set('Authorization', (`Bearer ${userOne.tokens[0].token}`).replace('Bearer ', '')) 
+    .send()
+    .expect(200)
+
+    console.log(response.body.length) 
+    response.body.forEach(res => {
+        expect(res.completed).toBe(true)
     })
 })
 

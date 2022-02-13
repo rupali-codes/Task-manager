@@ -4,20 +4,48 @@ const router = new express.Router()
 const auth = require('../middleware/auth')
 const multer = require('multer')
 const sharp = require('sharp')
+const cors = require('cors')
+
+/*pages*/
+router.get('/', (req, res) => {
+	res.render('index')
+})
+
+router.get('/index', (req, res) => {
+	res.render('index')
+})
+
+router.get('/signup', (req, res) => {
+	res.render('signup')
+})
+
+router.get('/login', (req, res) => {
+	res.render('login')
+})
+
+router.get('/dashboard', (req, res) => {
+	res.render('dashboard')
+})
 
 
 /*create*/
 /*sign up*/
+router.post('/signup', cors(), (req,  res) => {
+	console.log(req.body)
+})
+
 router.post('/users', async (req, res) => {
 	const user = new User(req.body)
-
+	console.log(req.body)
 	try{
 		await user.save()
 
 		const token = await user.generateAuthToken()
 
 		res.status(201).send({user, token})
+		// res.status(201).render('dashboard')
 	}catch(err){
+		console.log("Sign up problem! ", err)
 		res.status(400).send()
 	}
 })
@@ -30,6 +58,7 @@ router.post('/users/login',async (req, res) => {
 		const token = await user.generateAuthToken()
 
 		res.send({user, token})
+		// res.render('dashboard')
 	}catch(err){
 		res.status(400).send()
 		// console.log(err)
@@ -65,6 +94,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 /*read profile*/
 router.get('/users/me', auth, async (req, res) => {
 	res.send(req.user)
+	res.render('dashboard')
 })
 
 /*read a particular document*/
