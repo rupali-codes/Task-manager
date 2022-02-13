@@ -27,13 +27,7 @@ router.get('/dashboard', (req, res) => {
 	res.render('dashboard')
 })
 
-
-/*create*/
 /*sign up*/
-router.post('/signup', cors(), (req,  res) => {
-	console.log(req.body)
-})
-
 router.post('/users', async (req, res) => {
 	const user = new User(req.body)
 	console.log(req.body)
