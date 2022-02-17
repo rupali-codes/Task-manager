@@ -1,4 +1,3 @@
-// const app = require('./app')
 require('dotenv').config()
 require('./db/mongoose')
 const express = require('express')
@@ -18,7 +17,6 @@ const Task = require('./models/task')
 const app = express()
 app.use(cookieParser())
 
-
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
 const { application } = require('express')
@@ -36,4 +34,6 @@ const port = process.env.PORT 	//setting up port
 app.listen(port, () => {
 	console.log(`Server started at Port ${port}`)
 })
+
+// proccess is different for test environment
 
