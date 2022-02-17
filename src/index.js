@@ -29,6 +29,8 @@ app.use(taskRouter)
 app.set('view engine', 'ejs')
 app.set('views', viewsPath)
 
+console.log(publicPath)
+
 const port = process.env.PORT 	//setting up port
 
 app.listen(port, () => {
