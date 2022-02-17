@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "env-cmd -f ./config/dev.env node src/index.js",
+    "start": "node src/index.js",
     "dev": " env-cmd -f ./config/dev.env nodemon src/index.js",
     "test": "env-cmd -f ./config/test.env jest --watchAll --runInBand"
   },
@@ -20,6 +20,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "hbs": "^4.2.0",
