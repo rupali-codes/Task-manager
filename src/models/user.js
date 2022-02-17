@@ -8,9 +8,8 @@ const userSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true,
-		trim: true,
 		validate: (value) => {
-			if(!validator.isAlpha(value)){
+			if(!validator.isAlpha(value, 'en-US', {ignore: ' '})){
 				throw new Error("Please enter a valid name")
 			}
 		}
@@ -93,13 +92,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
 	const user = await User.findOne({email})
 
 	if(!user){
-		throw new Error("unable to login")
+		throw new Error("User does not exist")
 	}
 
 	const isMatch = await bcrypt.compare(password, user.password)
 
 	if(!isMatch){
-		throw new Error("unable to login")
+		throw new Error("Incorrect password")
 	}
 
 	return user
@@ -108,7 +107,6 @@ userSchema.statics.findByCredentials = async (email, password) => {
 // hash plain text apssowrd before saving
 userSchema.pre('save', async function(next){
 	const user = this
-
 	if(user.isModified('password')){
 		user.password = await bcrypt.hash(user.password, 8)
 	}

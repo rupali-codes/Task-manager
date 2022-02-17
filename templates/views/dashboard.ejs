@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/links.ejs') %>
+    <title><%= name%> - Dashboard </title>
+  </head>
+  <body>
+    <!-- section USER-PROFILE -->
+    <div class="container justify-content-center">
+      <div class="updateProfile mt-5 welcome mx-auto py-1 border-0 hidden">
+          <div class="d-flex px-4 pt-2">
+            <h2 class="text-light text-center">Update Profile</h2>
+            <button class="logout text-light ms-auto closeBtn">
+              <i class="bi bi-x-circle"></i>
+            </button>
+          </div>
+          <hr class="text-light">
+          <form method="POST" action="/user/updateProfile" class="px-4 my-2 fs-3 text-light" enctype="multipart/form-data">
+            <label class="fs-5 mt-3">Name</label>
+            <input type="text" name="name" class="inp fs-5 w-50" id="uName">
+
+            <label class="fs-5 mt-3">Email</label>
+            <input type="text" name="email" class="inp fs-5 w-50" id="uEmail">
+
+            <label class="fs-5 mt-3">Password</label>
+            <input type="password" name="password" class="inp fs-5 w-50" id="uPassword">
+
+            <label class="fs-4 mt-3"><i class="bi bi-person-bounding-box"></i> Avatar</label>
+            <input class="inp fs-5 w-50 py-2" type="file" id="file" name="avatar">
+
+            <button class="button d-block px-4 my-3 fs-5 mx-auto" type="submit">Update</button>     
+         </form>
+      </div>
+
+      <div class="user mt-5 mx-auto">
+        <div class="ub py-5 d-flex container">
+          <div class="d-lg-flex">
+              <% if(avatar) {%>
+                <img src="data:image/png;base64, <%= avatar %>" class="rounded-pill mx-3 my-0">
+              <%} else{%>
+                <img src="/images/unknown.jpg" class="rounded-pill mx-3 my-0">
+              <%}%>
+            <div class="details px-lg-4 px-md-4 text-light mt-3">
+              <h3 class="fw-bold"><%= name%></h3>
+
+              <!-- I will use an API to get random quotes -->
+            <blockquote class="fs-4 lh-1"><i class="bi bi-quote"></i> <p class="quote"> The Best thing about time is that It comes and goes.
+            </p></blockquote>
+
+          </div>
+        </div>
+        <div class="logout ms-auto mt-0">
+          <form method="post" action="/user/logout">
+            <button class="logout" title="Logout" type="logout">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </form>
+          <button class="logout text-center mx-auto" title="Update profile" id="updateProfileBtn">
+                <i class="bi bi-pencil"></i>
+          </button>
+          <button class="logout" title="Create Task" data-bs-toggle="modal" data-bs-target="#createTask"><i class="bi bi-plus-circle-fill"></i></button>
+        </div>
+      </div>
+
+      <div class="ud px-lg-4 py-4 d-md-flex">
+        <button class="actionBtn action hover-transform-upward" id="completed">
+          <h5 class="fs-5 hover-white mx-2"><i class="bi bi-check2-circle text-light"></i> Completed-Tasks</h5>
+        </button>
+
+        <button class="actionBtn action hover-transform-upward" id="pending">
+          <h5 class="fs-5 hover-white mx-2"><i class="bi bi-alarm text-light"></i> Pending-Tasks</h5>
+        </button>
+
+        <button class="actionBtn action hover-transform-upward" id="all">
+          <h5 class="fs-5 hover-white mx-2"><i class="bi bi-eye text-light"></i> All</h5>
+        </button>
+
+        <div class="ms-auto d-flex">
+          <input type="text" name="search" id="searchIn" placeholder="search" class="mx-2">
+          <button class="fw-bold searchBtn" title="search task"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- section TASKS -->
+    <div class="mx-auto container d-flex align-content-center flex-wrap mt-5 " id="tasks" >
+      <!-- <div class="card mx-2 rounded light-red-w">
+        <div class="ms-auto mx-4">
+          <img src="/images/icon-work.svg" height="40">
+        </div>
+        <div class="card-body" >
+          <div class="d-flex row">
+            <h4 class="card-title col-md-9">Work</h4>
+            <h6 class="ms-auto fw-bold threeDots col-md-3"><i class="bi bi-three-dots"></i></h6>
+          </div>
+          <h5 class="desc">I've to finish up my work. I've to finish up my office work and ...
+          <span class="readMore">Read more</span>
+          </h5>
+          <p class="">Last Week - 36hrs</p>
+        </div>
+      </div>
+      <div class="card mx-2 rounded light-red-s mx-auto-cos task">
+        <div class="ms-auto mx-4">
+          <img src="/images/icon-study.svg" height="40">
+        </div>
+        <div class="card-body">
+          <div class="d-flex row">
+            <h5 class="card-title col-md-9">Study</h5>
+            <h5 class="ms-auto fw-bold threeDots col-md-3"><i class="bi bi-three-dots"></i></h5>
+          </div>
+          <h5 class="desc">Lorem ipsum dolor sit. xcepteur sint occaecat cupidatat non proident, sunt in qui ...
+          <span class="readMore">Read more</span>
+          </h5>
+          <p class="">Last Week - 36hrs</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- modals -->
+  <!-- create task -->
+  <div class="modal fade" id="createTask" tabindex="-1" aria-labelledby="creatTask" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content text-light">
+        <div class="modal-header">
+          <h1 class="modal-title" id="createTask">Create Task</h1>
+          <button type="button" class="text-light border-0 btn-lg" data-bs-dismiss="modal" aria-label="Close" style="background: inherit;"> <i class="bi bi-x-circle"></i></button>
+        </div>
+        <div class="modal-body">
+         <form method="POST" action="/user/tasks/create" class="px-4 my-2 fs-3">
+            <label class="fs-5 mt-3">Title</label>
+            <input type="text" name="title" class="inp fs-5">
+
+            <label class="fs-5 mt-3">Description</label>
+            <input type="text" name="desc" class="inp fs-5">
+
+            <button class="button d-block px-4 mt-3 fs-5" type="submit">Create</button>     
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit task -->
+  <div class="modal fade" id="editTask" tabindex="-1" aria-labelledby="editTask" aria-hidden="true">
+    <div class="modal-dialog my-4">
+      <div class="modal-content text-light">
+        <div class="modal-header">
+          <h1 class="modal-title" id="editTask">Edit Task</h1>
+          <button type="button" class="text-light border-0 btn-lg" data-bs-dismiss="modal" aria-label="Close" style="background: inherit;"> <i class="bi bi-x-circle"></i></button>
+        </div>
+        <div class="modal-body">
+         <form method="POST" action="/user/tasks/update" class="px-4 my-2 fs-3">
+            <input type="text" name="id" id="tId" style="display: none;">
+            <label class="fs-5 mt-3">Title</label>
+            <input type="text" name="title" class="inp fs-5" id="title" disabled>
+
+            <label class="fs-5 mt-3">Description</label>
+            <input type="text" name="desc" class="inp fs-5" id="desc">
+
+
+            <label class="fs-5 mt-3">Completed</label>
+            <input class="fs-5" type="checkbox" value="false" name="status" id="status" checked>
+
+            <button class="button d-block px-2 mt-3 fs-6" type="submit">Update</button>     
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="attribution fs-5 mt-5 text-light">
+    Designed and Devloped with <span class=""><i class="bi bi-heart-fill text-danger"></i></span> by <a href="https://github.com/rupali18082003" class="text-light">Rupali</a>.
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/scripts/script.js"></script>
+</html>

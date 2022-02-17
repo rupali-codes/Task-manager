@@ -3,9 +3,14 @@ const User = require('../models/user')
 
 const auth = async (req, res, next) => {
 	try{
-		const token = req.header('Authorization').replace('Bearer ', '')
+		//uncomment this when testing with postman
+		// const token = req.header('Authorization').replace('Bearer ', '')  //for postman
+		// console.log(req.cookies.jwt)
+		const token = req.cookies.jwt
 
-		const decoded = jwt.verify(token, 'abracadabra')
+		const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+			expiresIn: 60000
+		})
 		const user = await User.findOne({_id: decoded._id, "tokens.token": token})
 
 		if(!user) throw new Error()
@@ -14,7 +19,8 @@ const auth = async (req, res, next) => {
 		req.user = user
 		next()
 	}catch(err){
-		res.status(401).send({Error: "Please authenticate"})
+		console.log(err)
+		res.status(401).send(err)
 	}
 }
 
