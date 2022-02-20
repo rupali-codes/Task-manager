@@ -23,7 +23,7 @@ const { application } = require('express')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static(publicPath))
+app.use(express.static('publicPath'))
 app.use(userRouter)
 app.use(taskRouter)
 app.set('view engine', 'ejs')
