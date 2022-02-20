@@ -7,7 +7,7 @@ const ejs = require('ejs')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-const publicPath = path.join(__dirname, '../public/')
+const publicPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/views/partials')
 
