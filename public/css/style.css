@@ -165,14 +165,14 @@ input:focus{
      background: var(--dark-blue);
      color: var(--white);
      border-radius: 20px;
+     transform: rotate(-2deg);
 }
 .card-body:hover{
     background: var(--desaturated-blue-dark);
     cursor: pointer;
+    transform: rotate(0deg);
 }
 .card-title{
-   /*font-size: 25px;*/
-   /*border-style: groove;*/
    border-bottom:  1px solid var(--white);
    margin-left: 10px;
 }

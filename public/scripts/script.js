@@ -14,6 +14,7 @@ const uName = document.querySelector('#uName')
 const uEmail = document.querySelector('#uEmail')
 const uPassword = document.querySelector('#uPassword')
 const quote = document.querySelector('.quote')
+const author = document.querySelector('.author')
 
 const tasksArr = [{
 	title: 'Work',
@@ -160,8 +161,10 @@ searchIn.addEventListener('input', () => {
 		}
 	}
 
-	fetch('https://icanhazdadjoke.com', setHeader)
-	.then((res) => res.json())
-	.then((data) => quote.textContent = data.joke)
-	.catch((err) => console.log(err))
-// }
+	fetch('https://free-quotes-api.herokuapp.com/')
+		.then(res => res.json())
+		.then(data => {
+			quote.textContent = data.quote
+			author.textContent = data.author
+		})
+
