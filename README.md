@@ -18,7 +18,7 @@ This app is developed to keep you on Track!
  			</td>
  			<td align="Center" width="30%">
  				<a href="https://getbootstrap.com" target="_blank" rel="noreferrer">
- 					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrapcss-colored.svg" width="36" height="36" alt="Bootstrap CSS">
+ 					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" width="36" height="36" alt="Bootstrap CSS">
  				</a> <br> Bootstrap CSS
  			</td>
  		</tr>
@@ -27,11 +27,6 @@ This app is developed to keep you on Track!
  <table>
  	<tbody>
  		<tr>
- 			<td align="Center" width="30%">
- 				<a href="https://ejs.co" target="_blank" rel="noreferrer">
- 					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/ejs-colored.svg" width="36" height="36" alt="Ejs">
- 				</a> <br> Ejs
- 			</td>
  			<td align="Center" width="30%">
  				<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
  					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript">
@@ -44,7 +39,7 @@ This app is developed to keep you on Track!
  			</td>
  			<td align="Center" width="30%">
  				<a href="https://expressjs.com" target="_blank" rel="noreferrer">
- 					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/expressjs-colored.svg" width="36" height="36" alt="ExpressJS">
+ 					<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored.svg" width="36" height="36" alt="ExpressJS">
  				</a> <br> ExpressJS
  			</td>
  			<td align="Center" width="30%">
@@ -69,31 +64,37 @@ This app is developed to keep you on Track!
 
  ### Installation 
 
- 1. [Fork](https://github.com/rupali-codes/Task-Manager-Api/fork) this repo. Click on the fork icon in top-right corner to get started
+ 1. [Fork](https://github.com/rupali-codes/Task-Manager-Api/fork) this repo, click on the fork icon in the top-right corner to get started
 
  2. Clone the repo, you can use the following the command: 
  	 ```bash
-   git clone https://github.com/<your-github-username>/Task-Manager-Api
-   ```
+     git clone https://github.com/<your-github-username>/Task-Manager-Api
+     ```
+
  3. Navigate to project directory
  	```bash
-   cd Task-Manager-Api
-   ```
+    cd Task-Manager-Api
+    ```
+
  4. Install dependencies
  	```bash
-   npm install
-   ```
+    npm install
+    ```
+
  5. Create your `.env` file take reference from `sample.env`
 
  6. Start server 
  	```bash
-   npm start
-   ```
+    npm start
+    ```
+
     OR
 
+
     ```bash
-   npm run dev
-   ```
+    npm run dev
+    ```
+
 ## Check out us [Live](https://rups-task-manager.herokuapp.com)
 
 ## Become a contributor
