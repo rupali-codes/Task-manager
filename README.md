@@ -2,6 +2,8 @@
 
 This app is developed to keep you on Track!
 
+![user-profile](client/public/images/user-profile.png)
+
 ## Built With
  <table>
  	<tbody>
@@ -95,7 +97,7 @@ This app is developed to keep you on Track!
     npm run dev
     ```
 
-## Check out us [Live](https://rups-task-manager.herokuapp.com)
+### View [Demo](https://rups-task-manager.herokuapp.com)
 
 ## Become a contributor
 

@@ -5,3 +5,4 @@ test.env
 .env
 math.js
 math.test.js
+config

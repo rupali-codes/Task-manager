@@ -7,9 +7,9 @@ const ejs = require('ejs')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-const publicPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../templates/views')
-const partialsPath = path.join(__dirname, '../templates/views/partials')
+const publicPath = path.join(__dirname, '../client/public')
+const viewsPath = path.join(__dirname, '../client/views')
+const partialsPath = path.join(__dirname, '../client/views/partials')
 
 const User = require('./models/user')
 const Task = require('./models/task')
@@ -36,6 +36,3 @@ const port = process.env.PORT 	//setting up port
 app.listen(port, () => {
 	console.log(`Server started at Port ${port}`)
 })
-
-// proccess is different for test environment
-

@@ -167,4 +167,3 @@ searchIn.addEventListener('input', () => {
 			quote.textContent = data.quote
 			author.textContent = data.author
 		})
-

@@ -3,7 +3,7 @@ const User = require('../models/user')
 
 const auth = async (req, res, next) => {
 	try{
-		//uncomment this when testing with postman
+		//testng with postman
 		// const token = req.header('Authorization').replace('Bearer ', '')  //for postman
 		// console.log(req.cookies.jwt)
 		const token = req.cookies.jwt
